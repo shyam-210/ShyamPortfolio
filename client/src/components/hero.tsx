@@ -7,11 +7,12 @@ export default function Hero() {
   const typingText = useTypingAnimation("AI & Data Science Student | Aspiring AI Engineer", 100);
 
   const handleDownloadResume = () => {
-    // Create a mock resume download
-    const link = document.createElement('a');
-    link.href = '/api/resume/download';
-    link.click();
-  };
+  const link = document.createElement("a");
+  link.href = "/Shyam Resume.pdf"; // served from public/
+  link.download = "Shyam Resume.pdf";
+  link.click();
+};
+
 
   const scrollToContact = () => {
     const element = document.querySelector('#contact');

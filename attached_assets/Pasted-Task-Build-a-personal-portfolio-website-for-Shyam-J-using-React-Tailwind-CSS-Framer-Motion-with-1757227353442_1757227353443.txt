@@ -1,0 +1,183 @@
+Task: Build a personal portfolio website for Shyam J using React + Tailwind CSS + Framer Motion with light theme and a modern, interactive, and elegant design.
+The website should be responsive, interactive, and visually stunning, with smooth animations, widgets, and unique layouts.
+
+🎨 General Design & Styling
+
+Theme: Light theme with soft pastel accents (sky blue #3B82F6, emerald green #10B981, lavender #A78BFA, subtle gradients).
+
+Font: Use Inter or Poppins for a clean, modern feel.
+
+Buttons: Rounded rounded-xl, soft shadow, hover with slight scale-up + glow border effect.
+
+Cards/Sections: rounded-2xl, subtle shadow-xl, hover with lift-up animation.
+
+Animations: Smooth fade-ins, slide-ins, and staggered animations (Framer Motion).
+
+Navbar: Sticky, transparent with background blur on scroll, highlighting active section.
+
+Background: Subtle animated gradient with floating particle effects.
+
+Scroll Experience: Smooth scrolling with scroll-triggered animations (each section animates in).
+
+Extras: Floating Back-to-Top button with hover pulse.
+
+🏠 Section 1: Hero / Landing
+
+Content Centered with large photo/avatar of Shyam (circular, bordered, soft glow).
+
+Name (H1): “Shyam J” in bold, large font.
+
+Tagline (typing effect): “AI & Data Science Student | Aspiring AI Engineer”.
+
+Subtext: “Passionate about AI, Machine Learning, and Deep Learning.”
+
+Buttons:
+
+Primary: “Download Resume” (opens PDF in new tab).
+
+Secondary: “Contact Me” (scrolls to contact form).
+
+Social Icons (animated hover): GitHub, LinkedIn, LeetCode (floating row of icons).
+
+Background: Animated gradient with floating AI/tech icons (e.g., neural network node icons, data symbols).
+
+👤 Section 2: About Me
+
+Title: “About Me” with underline accent.
+
+Text (animated fade-in):
+“I’m a final-year B.Tech student in Artificial Intelligence and Data Science at KLN College of Engineering. I specialize in ML, DL, and AI-driven projects, with a passion for building impactful real-world solutions.”
+
+Widget: Interactive timeline card showing academic journey + personal growth.
+
+Extra: Hover card showing fun fact: “Loves building AI projects that solve real-world problems.”
+
+🎓 Section 3: Education
+
+Title: “Education” (centered with icon).
+
+Display as vertical timeline with icons (🎓).
+
+B.Tech Artificial Intelligence and Data Science (2026)
+
+KLN College of Engineering
+
+CGPA: 8.3 (up to 5th semester)
+
+HSC (2022)
+
+CSR Memorial School, Madurai
+
+85%
+
+Hover effect: Cards glow when hovered, showing extra details like subjects focus.
+
+🛠 Section 4: Skills & Tools
+
+Title: “Skills & Tools”
+
+Layout: Interactive grid with skill icons + animated progress bars.
+
+Categories:
+
+Programming: Python, Java, C
+
+Frameworks: Pandas, NumPy, Scikit-learn, TensorFlow, Keras, Matplotlib, Seaborn
+
+Databases & Tools: SQL, Git, Jupyter Notebook
+
+Effect: Hovering over each skill card shows level of expertise (e.g., 80%) with bar animation.
+
+Extras: Add small AI-themed icons (🧠 for ML, 📊 for Data).
+
+🚀 Section 5: Projects
+
+Title: “Projects” (grand, highlighted).
+
+Display as interactive project cards in a grid.
+
+Each card includes:
+
+Title, short description, tech stack tags.
+
+Hover animation: Card flips/slides up with details + “View Project” button.
+
+Projects:
+
+Virtual Fencing Project
+
+AI surveillance with YOLOv8 + OpenCV.
+
+Replaces traditional physical fences.
+
+Brain Tumor Segmentation Web App
+
+Built with U-Net, detects tumors in MRI scans.
+
+Alzheimer’s Disease Classification
+
+CNN-based classification of MRI images.
+
+Extra widget: Filter/sort projects by tags (AI, DL, CV).
+
+📜 Section 6: Certificates
+
+Title: “Certificates”
+
+Layout: Horizontal scroll gallery of certificate cards.
+
+Certificates:
+
+Microsoft Azure Cloud Computing (Value-Added Course)
+
+Career Essentials in Generative AI (Microsoft + LinkedIn)
+
+NPTEL: Introduction to Machine Learning (IIT Kharagpur)
+
+NPTEL: Human Computer Interaction
+
+Hover effect: Card flips to show issuer + date.
+
+📩 Section 7: Contact
+
+Title: “Let’s Connect”
+
+Form: Name, Email, Message (clean, minimal design).
+
+Submit button with hover glow.
+
+Add success message “Thanks! I’ll get back to you soon.”
+
+Sidebar: Contact info (📍 Madurai, 📧 Email, 📞 Phone).
+
+Social Links: GitHub, LinkedIn, LeetCode (interactive icons).
+
+⚡ Section 8: Footer
+
+Design: Minimal, light gray background.
+
+Text: “© 2025 Shyam J. All rights reserved.”
+
+Quick Links: Home, About, Projects, Contact.
+
+Floating Icons: Animated GitHub/LinkedIn logos.
+
+🔮 Extra Unique Features
+
+Navbar highlight: Section currently in view should glow in navbar.
+
+Interactive cursor effect: Cursor glows when hovering over links/buttons.
+
+Back-to-top button: Circular with arrow, glowing hover effect.
+
+Mobile responsive: Smooth collapse navbar → hamburger menu.
+
+Animations:
+
+Hero: Typing + particle animation.
+
+About/Skills: Slide-in.
+
+Projects: Hover lift + modal preview.
+
+Certificates: Flip animation.

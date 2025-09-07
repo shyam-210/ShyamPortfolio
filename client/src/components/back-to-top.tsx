@@ -35,13 +35,13 @@ export default function BackToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="fixed bottom-8 right-8 z-40"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-40"
           data-testid="back-to-top"
         >
           <Button
             onClick={scrollToTop}
             size="lg"
-            className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:animate-pulse"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:animate-pulse"
             data-testid="back-to-top-button"
           >
             <ArrowUp size={24} />

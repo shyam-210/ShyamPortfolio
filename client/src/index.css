@@ -137,3 +137,22 @@
     background-clip: text;
   }
 }
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .max-w-7xl, .max-w-6xl, .max-w-4xl {
+    max-width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

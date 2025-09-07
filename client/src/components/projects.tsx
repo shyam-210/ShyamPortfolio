@@ -9,31 +9,34 @@ const projects = [
     id: 1,
     title: "Virtual Fencing Project",
     description: "AI-powered surveillance system using YOLOv8 and OpenCV that replaces traditional physical fences with intelligent monitoring.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: "virtualFence.png",
     tags: ["YOLOv8", "OpenCV", "Python"],
     categories: ["ai", "cv"],
     icon: <Video size={24} />,
     gradient: "from-primary to-secondary",
+    githubUrl: "https://github.com/shyam-210/VirtualFencing"
   },
   {
     id: 2,
     title: "Brain Tumor Segmentation",
     description: "Web application using U-Net architecture for accurate detection and segmentation of brain tumors in MRI scans.",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: "brainTumor.png",
     tags: ["U-Net", "TensorFlow", "Flask"],
     categories: ["ai", "dl"],
     icon: <Brain size={24} />,
     gradient: "from-secondary to-accent",
+    githubUrl: "https://github.com/shyam-210/Brain_Tumor_Segmentation"
   },
   {
     id: 3,
     title: "Alzheimer's Disease Classification",
     description: "CNN-based classification system for early detection of Alzheimer's disease using MRI image analysis.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+    image: "Alzhiemers.png",
     tags: ["CNN", "Keras", "Python"],
     categories: ["ai", "dl"],
     icon: <Microscope size={24} />,
     gradient: "from-accent to-primary",
+    githubUrl: "https://github.com/shyam-210/Alzheimers-Disease-Classification"
   },
 ];
 
@@ -114,12 +117,11 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
                   <div className="flex space-x-2">
-                    <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30" data-testid={`project-view-${project.id}`}>
-                      <Eye size={16} />
-                    </Button>
-                    <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30" data-testid={`project-github-${project.id}`}>
-                      <Github size={16} />
-                    </Button>
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30" data-testid={`project-github-${project.id}`}>
+                        <Github size={16} />
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -148,13 +150,15 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <Button
-                  className={`w-full bg-gradient-to-r ${project.gradient} text-primary-foreground hover:shadow-lg hover:scale-105 transition-all duration-300`}
-                  data-testid={`project-button-${project.id}`}
-                >
-                  <ExternalLink className="mr-2" size={16} />
-                  View Project
-                </Button>
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    className={`w-full bg-gradient-to-r ${project.gradient} text-primary-foreground hover:shadow-lg hover:scale-105 transition-all duration-300`}
+                    data-testid={`project-button-${project.id}`}
+                  >
+                    <ExternalLink className="mr-2" size={16} />
+                    View Project
+                  </Button>
+                </a>
               </div>
             </motion.div>
           ))}
@@ -167,13 +171,15 @@ export default function Projects() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="text-center mt-12"
         >
-          <Button
-            className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground px-8 py-3 rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
-            data-testid="view-more-projects"
-          >
-            <Github className="mr-2" size={20} />
-            View More on GitHub
-          </Button>
+          <a href="https://github.com/shyam-210" target="_blank" rel="noopener noreferrer">
+            <Button
+              className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground px-8 py-3 rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300"
+              data-testid="view-more-projects"
+            >
+              <Github className="mr-2" size={20} />
+              View More on GitHub
+            </Button>
+          </a>
         </motion.div>
       </div>
     </section>

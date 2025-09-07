@@ -9,7 +9,7 @@ export default function Education() {
 
   return (
     <section id="education" className="py-20 bg-muted/30" data-testid="education-section">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+      <div className="max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 overflow-hidden" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -24,10 +24,9 @@ export default function Education() {
         </motion.div>
 
         {/* Vertical Timeline */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full timeline-line rounded-full"></div>
-
+          <div className="absolute left-1 sm:left-2 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full timeline-line rounded-full"></div>
           {/* Education Items */}
           <div className="space-y-12">
             {/* B.Tech */}
@@ -38,18 +37,17 @@ export default function Education() {
               className="relative flex flex-col md:flex-row items-start md:items-center"
               data-testid="education-btech"
             >
-              <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 bg-primary rounded-full border-4 border-background shadow-lg z-10"></div>
-
-              <div className="w-full md:w-1/2 md:pr-8 ml-16 md:ml-0 md:text-right">
+              <div className="absolute left-[-1px] sm:left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 bg-primary rounded-full border-2 sm:border-4 border-background shadow-lg z-10"></div>
+              <div className="w-full md:w-1/2 md:pr-4 lg:pr-8 ml-6 sm:ml-8 md:ml-0 md:text-right">
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-card p-6 rounded-2xl shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
+                  className="bg-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center mb-3 md:justify-end">
                     <GraduationCap className="text-primary mr-2" size={20} />
                     <span className="text-sm text-muted-foreground">2022 - 2026</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">B.Tech Artificial Intelligence and Data Science</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">B.Tech Artificial Intelligence and Data Science</h3>
                   <p className="text-primary font-semibold mb-2">KLN College of Engineering</p>
                   <p className="text-muted-foreground mb-3">
                     Comprehensive study of AI algorithms, machine learning, deep learning, and data science methodologies.
@@ -71,26 +69,26 @@ export default function Education() {
               className="relative flex flex-col md:flex-row items-start md:items-center"
               data-testid="education-hsc"
             >
-              <div className="absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 bg-secondary rounded-full border-4 border-background shadow-lg z-10"></div>
+              <div className="absolute left-[-1px] sm:left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 bg-secondary rounded-full border-2 sm:border-4 border-background shadow-lg z-10"></div>
 
               <div className="hidden md:block w-1/2"></div>
 
-              <div className="w-full md:w-1/2 md:pl-8 ml-16 md:ml-0">
+              <div className="w-full md:w-1/2 md:pl-4 lg:pl-8 ml-6 sm:ml-8 md:ml-0">
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-card p-6 rounded-2xl shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
+                  className="bg-card p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl shadow-lg border border-border/50 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-center mb-3">
                     <School className="text-secondary mr-2" size={20} />
                     <span className="text-sm text-muted-foreground">2022</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Higher Secondary Certificate (HSC)</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">Higher Secondary Certificate (HSC)</h3>
                   <p className="text-secondary font-semibold mb-2">CSR Memorial School, Madurai</p>
                   <p className="text-muted-foreground mb-3">
                     Focused on Science stream with Mathematics, Physics, Chemistry, and Computer Science.
                   </p>
                   <div className="bg-secondary/10 px-3 py-1 rounded-full inline-block">
-                    <span className="text-secondary font-medium">Score: 85%</span>
+                    <span className="text-secondary font-medium">Percenatge: 85%</span>
                   </div>
                 </motion.div>
               </div>

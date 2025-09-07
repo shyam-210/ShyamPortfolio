@@ -10,7 +10,6 @@ export default function Hero() {
     // Create a mock resume download
     const link = document.createElement('a');
     link.href = '/api/resume/download';
-    link.download = 'Shyam_J_Resume.pdf';
     link.click();
   };
 
@@ -29,7 +28,7 @@ export default function Hero() {
       <div className="floating-particle w-5 h-5 bottom-40 left-1/4 opacity-50" style={{ animationDelay: '4s' }}></div>
       <div className="floating-particle w-2 h-2 top-60 right-1/3 opacity-70" style={{ animationDelay: '1s' }}></div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 text-center w-full">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -44,7 +43,7 @@ export default function Hero() {
           >
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
+                src="/shyam.jpg"
                 alt="Shyam J - AI & Data Science Student"
                 className="w-40 h-40 rounded-full border-4 border-primary/20 shadow-2xl animate-glow"
                 data-testid="hero-avatar"
@@ -57,7 +56,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-5xl md:text-7xl font-bold mb-4 gradient-text"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 gradient-text"
             data-testid="hero-name"
           >
             Shyam J
@@ -67,7 +66,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-6 h-12"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 h-8 sm:h-10 md:h-12"
           >
             <span className="typing-animation" data-testid="hero-tagline">{typingText}</span>
           </motion.div>
@@ -76,7 +75,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-2"
             data-testid="hero-description"
           >
             Passionate about AI, Machine Learning, and Deep Learning. Building intelligent solutions that make a difference.
@@ -86,11 +85,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.0, duration: 0.6 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-2" 
           >
             <Button
               onClick={handleDownloadResume}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-medium"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-sm sm:text-base rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-medium w-full sm:w-auto"
               data-testid="download-resume-button"
             >
               <Download className="mr-2" size={20} />
@@ -99,7 +98,7 @@ export default function Hero() {
             <Button
               onClick={scrollToContact}
               variant="secondary"
-              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-medium"
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-sm sm:text-base rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-medium w-full sm:w-auto"
               data-testid="contact-me-button"
             >
               <Mail className="mr-2" size={20} />
@@ -112,20 +111,20 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex justify-center space-x-6"
+            className="flex justify-center space-x-4 sm:space-x-6 px-2"
           >
             <motion.a
-              href="https://github.com/shyamj"
+              href="https://github.com/shyam-210"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.25 }}
-              className="text-2xl text-muted-foreground hover:text-primary transition-all duration-300 p-3 rounded-full hover:bg-primary/10"
+              className="text-xl sm:text-2xl text-muted-foreground hover:text-primary transition-all duration-300 p-2 sm:p-3 rounded-full hover:bg-primary/10"
               data-testid="social-github"
             >
               <Github size={24} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/shyamj"
+              href="https://www.linkedin.com/in/shyamjk10/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.25 }}
@@ -135,7 +134,7 @@ export default function Hero() {
               <Linkedin size={24} />
             </motion.a>
             <motion.a
-              href="https://leetcode.com/shyamj"
+              href="https://leetcode.com/u/shyam__026/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.25 }}

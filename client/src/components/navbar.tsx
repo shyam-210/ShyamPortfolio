@@ -26,20 +26,20 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-morphism border-b border-border/50" data-testid="navbar">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 w-full z-50 glass-morphism border-b border-border/50 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="flex justify-between items-center h-16 w-full min-w-0">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex-shrink-0"
           >
-            <span className="text-2xl font-bold gradient-text" data-testid="navbar-brand">Shyam J</span>
+            <span className="text-xl sm:text-2xl font-bold gradient-text" data-testid="navbar-brand">Shyam J</span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-4 flex items-baseline space-x-2 lg:space-x-4">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.href}
@@ -47,7 +47,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => scrollToSection(item.href)}
-                  className={`nav-link px-3 py-2 rounded-lg text-sm font-medium hover:bg-muted transition-all duration-200 ${
+                  className={`nav-link px-2 lg:px-3 py-2 rounded-lg text-xs lg:text-sm font-medium hover:bg-muted transition-all duration-200 ${
                     activeSection === item.href.slice(1) ? "active" : ""
                   }`}
                   data-testid={`nav-link-${item.label.toLowerCase()}`}

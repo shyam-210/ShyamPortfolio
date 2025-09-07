@@ -58,7 +58,7 @@ export default function Footer() {
           <div className="text-center md:text-right" data-testid="footer-social">
             <div className="flex justify-center md:justify-end space-x-4">
               <motion.a
-                href="https://github.com/shyamj"
+                href="https://github.com/shyam-210"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.25 }}
@@ -68,7 +68,7 @@ export default function Footer() {
                 <Github size={24} />
               </motion.a>
               <motion.a
-                href="https://linkedin.com/in/shyamj"
+                href="https://www.linkedin.com/in/shyamjk10/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.25 }}
@@ -90,9 +90,7 @@ export default function Footer() {
           data-testid="footer-copyright"
         >
           <p className="text-muted-foreground flex items-center justify-center gap-2">
-            © 2025 Shyam J. All rights reserved. Built with 
-            <Heart className="text-red-500" size={16} fill="currentColor" />
-            and AI.
+            © 2025 Shyam J. All rights reserved.
           </p>
         </motion.div>
       </div>

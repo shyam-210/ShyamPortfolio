@@ -79,7 +79,7 @@ export default function About() {
                   </div>
                   <div>
                     <h4 className="font-semibold">Higher Secondary</h4>
-                    <p className="text-sm text-muted-foreground">2022 | Score: 85%</p>
+                    <p className="text-sm text-muted-foreground">2022 | Percentage: 85%</p>
                   </div>
                 </motion.div>
 

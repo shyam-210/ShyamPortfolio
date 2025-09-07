@@ -44,7 +44,7 @@ export default function Hero() {
           >
             <div className="relative">
               <img
-                src="src/shyam.jpg"
+                src="shyam.jpg"
                 alt="Shyam J - AI & Data Science Student"
                 className="w-40 h-40 rounded-full border-4 border-primary/20 shadow-2xl animate-glow"
                 data-testid="hero-avatar"

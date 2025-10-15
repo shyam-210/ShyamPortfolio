@@ -27,7 +27,7 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <p className="text-lg text-muted-foreground leading-relaxed mb-6" data-testid="about-description">
-              I' a final-year B.Tech student in Artificial Intelligence and Data Science at KLN College of Engineering. 
+              I'm a final-year B.Tech student in Artificial Intelligence and Data Science at KLN College of Engineering. 
               I specialize in ML, DL, and AI-driven projects, with a passion for building impactful real-world solutions.
             </p>
 

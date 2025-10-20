@@ -9,6 +9,7 @@ import Certificates from "@/components/certificates";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import BackToTop from "@/components/back-to-top";
+import Experience from "@/components/experience";
 
 export default function Portfolio() {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function Portfolio() {
         <Hero />
         <About />
         <Education />
+        <Experience />
         <Skills />
         <Projects />
         <Certificates />

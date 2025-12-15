@@ -1,9 +1,30 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, Users, Brain, Bot } from "lucide-react";
+import { Award, Users, Brain, Bot, Code } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const certificates = [
+  {
+    id: 0,
+    title: "230+ LeetCode Problems Solved",
+    subtitle: "LeetCode",
+    issuer: "Problem Solving",
+    description: "Demonstrated strong problem-solving skills and expertise in data structures and algorithms by solving over 230 problems on LeetCode.",
+    icon: <Code size={24} />,
+    bgColor: "from-primary/5 to-primary/10",
+    borderColor: "border-primary/20",
+    iconBg: "bg-primary/20",
+    iconColor: "text-primary",
+    badgeColor: "bg-primary/10 text-primary",
+    link: "https://leetcode.com/u/shyam__026/",
+  },
   {
     id: 1,
     title: "Microsoft Azure Cloud Computing",
@@ -61,6 +82,7 @@ const certificates = [
 export default function Certificates() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
     <section id="certificates" className="py-20 bg-card" data-testid="certificates-section">
@@ -78,54 +100,57 @@ export default function Certificates() {
           <p className="text-muted-foreground mt-4">Professional certifications and continuous learning achievements</p>
         </motion.div>
 
-        {/* Certificates Horizontal Scroll */}
-        <div className="certificate-scroll overflow-x-auto pb-6" data-testid="certificates-container">
-          <div className="flex space-x-6 min-w-max">
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                initial={{ opacity: 0, x: 50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className={`bg-gradient-to-br ${cert.bgColor} p-6 rounded-2xl border ${cert.borderColor} w-80 flex-shrink-0 hover:shadow-xl transition-all duration-300`}
-                data-testid={`certificate-${cert.id}`}
-              >
-                <div className="text-center">
-                  <div className={`w-16 h-16 ${cert.iconBg} rounded-full mx-auto flex items-center justify-center mb-4`}>
-                    <div className={cert.iconColor}>
-                      {cert.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{cert.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">{cert.subtitle}</p>
-                  <div className={`${cert.badgeColor} px-4 py-2 rounded-full mb-4 inline-block`}>
-                    <span className="font-medium text-sm">{cert.issuer}</span>
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{cert.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Scroll Indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex justify-center mt-6 space-x-2"
-          data-testid="scroll-indicators"
+        <Carousel
+          plugins={[plugin.current]}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
         >
-          {certificates.map((_, index) => (
-            <div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === 0 ? "bg-primary" : "bg-muted"
-              }`}
-            />
-          ))}
-        </motion.div>
+          <CarouselContent className="-ml-4">
+            {certificates.map((cert, index) => {
+              const card = (
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className={`bg-gradient-to-br ${cert.bgColor} p-6 rounded-2xl border ${cert.borderColor} h-full w-80 flex-shrink-0 hover:shadow-xl transition-all duration-300 flex flex-col`}
+                  data-testid={`certificate-${cert.id}`}
+                >
+                  <div className="text-center flex-grow">
+                    <div
+                      className={`w-16 h-16 ${cert.iconBg} rounded-full mx-auto flex items-center justify-center mb-4`}
+                    >
+                      <div className={cert.iconColor}>{cert.icon}</div>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{cert.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{cert.subtitle}</p>
+                    <div className={`${cert.badgeColor} px-4 py-2 rounded-full mb-4 inline-block`}>
+                      <span className="font-medium text-sm">{cert.issuer}</span>
+                    </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{cert.description}</p>
+                  </div>
+                </motion.div>
+              );
+
+              return (
+                <CarouselItem key={cert.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  {cert.link ? (
+                    <a href={cert.link} target="_blank" rel="noopener noreferrer" className="h-full block">
+                      {card}
+                    </a>
+                  ) : (
+                    card
+                  )}
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );

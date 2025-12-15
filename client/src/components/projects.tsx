@@ -1,8 +1,15 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Github, Eye, Video, Brain, Microscope } from "lucide-react";
+import { ExternalLink, Github, Brain, Microscope, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const projects = [
   {
@@ -14,7 +21,7 @@ const projects = [
     categories: ["ai", "cv"],
     icon: <Video size={24} />,
     gradient: "from-primary to-secondary",
-    githubUrl: "https://github.com/shyam-210/VirtualFencing"
+    githubUrl: "https://github.com/shyam-210/VirtualFencing",
   },
   {
     id: 2,
@@ -25,7 +32,7 @@ const projects = [
     categories: ["ai", "dl"],
     icon: <Brain size={24} />,
     gradient: "from-secondary to-accent",
-    githubUrl: "https://github.com/shyam-210/Brain_Tumor_Segmentation"
+    githubUrl: "https://github.com/shyam-210/Brain_Tumor_Segmentation",
   },
   {
     id: 3,
@@ -36,7 +43,18 @@ const projects = [
     categories: ["ai", "dl"],
     icon: <Microscope size={24} />,
     gradient: "from-accent to-primary",
-    githubUrl: "https://github.com/shyam-210/Alzheimers-Disease-Classification"
+    githubUrl: "https://github.com/shyam-210/Alzheimers-Disease-Classification",
+  },
+  {
+    id: 4,
+    title: "AI Campus Assistant",
+    description: "A RAG-based campus assistant using Langchain and Groq to provide dedicated AI-powered information for educational institutions.",
+    image: "/campus_assistant.jpg",
+    tags: ["RAG", "Langchain", "Groq"],
+    categories: ["ai", "llm"],
+    icon: <Brain size={24} />,
+    gradient: "from-primary to-accent",
+    githubUrl: "https://github.com/shyam-210/CampusAssistant",
   },
 ];
 
@@ -45,6 +63,7 @@ const filterCategories = [
   { id: "ai", label: "AI/ML" },
   { id: "cv", label: "Computer Vision" },
   { id: "dl", label: "Deep Learning" },
+  { id: "llm", label: "LLMs" },
 ];
 
 export default function Projects() {
@@ -52,9 +71,14 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState("all");
 
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
-    : projects.filter(project => project.categories.includes(activeFilter));
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.categories.includes(activeFilter));
+
+  const plugin = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
 
   return (
     <section id="projects" className="py-20 bg-muted/30" data-testid="projects-section">
@@ -65,14 +89,15 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold gradient-text mb-4" data-testid="projects-title">Featured Projects</h2>
+          <h2 className="text-4xl font-bold gradient-text mb-4" data-testid="projects-title">
+            Featured Projects
+          </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Showcasing innovative AI and machine learning projects that solve real-world problems
           </p>
         </motion.div>
 
-        {/* Project Filter Tags */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -97,74 +122,86 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ delay: 0.4 + (index * 0.1), duration: 0.6 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-card rounded-2xl shadow-lg border border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-400"
-              data-testid={`project-${project.id}`}
-            >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
-                  <div className="flex space-x-2">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Button size="sm" className="bg-white/20 backdrop-blur-sm hover:bg-white/30" data-testid={`project-github-${project.id}`}>
-                        <Github size={16} />
+        <Carousel
+          plugins={[plugin.current]}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {filteredProjects.map((project, index) => (
+              <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-card rounded-2xl shadow-lg border border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-400 h-full"
+                  data-testid={`project-${project.id}`}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
+                      <div className="flex space-x-2">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Button
+                            size="sm"
+                            className="bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                            data-testid={`project-github-${project.id}`}
+                          >
+                            <Github size={16} />
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xl font-bold">{project.title}</h3>
+                      <div className="text-primary">{project.icon}</div>
+                    </div>
+
+                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed flex-grow">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                          data-testid={`project-tag-${tag.toLowerCase()}`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-auto">
+                      <Button
+                        className={`w-full bg-gradient-to-r ${project.gradient} text-primary-foreground hover:shadow-lg hover:scale-105 transition-all duration-300`}
+                        data-testid={`project-button-${project.id}`}
+                      >
+                        <ExternalLink className="mr-2" size={16} />
+                        View Project
                       </Button>
                     </a>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
 
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <div className={`text-primary`}>
-                    {project.icon}
-                  </div>
-                </div>
-
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
-                      data-testid={`project-tag-${tag.toLowerCase()}`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    className={`w-full bg-gradient-to-r ${project.gradient} text-primary-foreground hover:shadow-lg hover:scale-105 transition-all duration-300`}
-                    data-testid={`project-button-${project.id}`}
-                  >
-                    <ExternalLink className="mr-2" size={16} />
-                    View Project
-                  </Button>
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* View More Projects Button */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
